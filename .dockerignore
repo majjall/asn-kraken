@@ -1,0 +1,20 @@
+# In .dockerignore
+# Exclude everything:
+#
+*
+
+# Now un-exclude the folders or files required for nx to run inside the container
+#
+!**/eslint.config.mjs
+!.nvmrc
+!.npmrc
+!.prettierignore
+!prettier.config.js
+!jest.config.ts
+!jest.preset.js
+!nx.json
+!**/package-lock.json
+!**/package.json
+!tsconfig.base.json
+!workspace.json
+
