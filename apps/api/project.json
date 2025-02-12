@@ -5,6 +5,18 @@
   "projectType": "application",
   "tags": [],
   "targets": {
+     "prisma:generate": {
+      "command": "npx prisma generate --schema ./prisma/schema.prisma",
+      "options": {
+        "cwd": "apps/api"
+      }
+    },
+    "prisma:db-push": {
+      "command": "npx prisma db push --skip-generate --schema ./prisma/schema.prisma",
+      "options": {
+        "cwd": "apps/api"
+      }
+    },
     "build": {
       "executor": "nx:run-commands",
       "options": {

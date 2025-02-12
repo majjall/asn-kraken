@@ -1,0 +1,21 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>File Upload</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div *ngIf="selectedFile; else noFile">
+      Selected file: {{ selectedFile.name || 'No file selected yet.' }}
+    </div>
+    <ng-template #noFile>
+      <p>No file selected</p>
+    </ng-template>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)" accept=".xlsx" />
+    <button mat-raised-button color="primary" (click)="fileInput.click()">
+      Choose File
+    </button>
+  </mat-card-actions>
+</mat-card>

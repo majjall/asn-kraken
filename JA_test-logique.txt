@@ -1,0 +1,86 @@
+Résolution
+----------
+
+Composants:
+- Cable C
+- Fibre F
+- Equipement 1 E1
+- Equipement 2 E2
+- Joints J
+
+Contraintes:
+
+
+
+
+Analysons d'abord les contraintes :
+
+- F avant C
+- C avant E1
+- E2 immédiatement après F
+- J après F et C, mais pas immédiatement après F
+- E1 et E2 ne peuvent pas être consécutifs
+
+On retient donc que:
+
+- F doit être en premier ou deuxième
+- E2 doit être juste après F, donc si F est premier, E2 est deuxième
+- C doit venir après F mais avant E1
+- J doit venir après F et C, mais pas juste après F
+
+Voici les deux séquences minimales possibles :
+
+Séquence 1 : F → E2 → C → J → E1
+
+Valide car :
+
+F est avant C
+E2 est juste après F
+C est avant E1
+J est après F et C mais pas juste après F
+E2 et E1 ne sont pas consécutifs
+
+
+
+Séquence 2 : F → E2 → C → E1 → J
+
+Valide car :
+
+F est avant C
+E2 est juste après F
+C est avant E1
+J est après F et C
+E2 et E1 ne sont pas consécutifs
+
+
+
+
+
+
+
+Ces deux séquences sont les seules possibles car :
+
+F doit toujours être premier (car E2 doit le suivre immédiatement)
+E2 doit être deuxième (contrainte d'être juste après F)
+C doit être troisième (car il doit être après F mais avant E1)
+Les seules positions possibles pour E1 et J sont les deux dernières positions, ce qui donne les deux combinaisons ci-dessus
+
+
+Aucune autre séquence n'est possible car :
+
+On ne peut pas mettre J juste après F (interdit)
+On ne peut pas mettre E1 et E2 côte à côte
+On ne peut pas mettre C avant F
+On ne peut pas mettre E1 avant C
+
+Il y a donc exactement deux séquences de construction possibles qui respectent toutes les contraintes données.
+Elles peuvent être mise à la suite pour former une chaîne.
+
+
+
+
+
+
+
+
+

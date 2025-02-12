@@ -1,0 +1,51 @@
+import {
+  INestApplication,
+  Injectable,
+  Logger,
+  OnModuleDestroy,
+  OnModuleInit,
+} from '@nestjs/common';
+
+import { PrismaClient } from '@prisma/client';
+
+@Injectable()
+export class PrismaService
+  extends PrismaClient
+  implements OnModuleInit, OnModuleDestroy
+{
+  private readonly logger = new Logger(PrismaService.name);
+
+  async onModuleInit() {
+    let retries = 5;
+
+    while (retries > 0) {
+      try {
+        await this.$connect();
+
+        this.logger.log('Successfully connected to mongo database');
+
+        break;
+      } catch (err) {
+        this.logger.error(err);
+
+        this.logger.error(
+          `there was an error connecting to database, retrying .... (${retries})`
+        );
+
+        retries -= 1;
+
+        await new Promise((res) => setTimeout(res, 3_000)); // wait for three seconds
+      }
+    }
+  }
+
+  async enableShutdownHooks(app: INestApplication) {
+    process.on('beforeExit', async () => {
+      await app.close();
+    });
+  }
+
+  async onModuleDestroy() {
+    await this.$disconnect();
+  }
+}

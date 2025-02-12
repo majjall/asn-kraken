@@ -1,0 +1,25 @@
+// We want to connect to the MongoDB datasource
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Category {
+  equipment
+  product
+}
+
+model Component {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime @default(now())
+
+  name       String   @unique
+  updated_at DateTime
+  prices     Int[]
+  rate       Int
+  category   Category
+}
