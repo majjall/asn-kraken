@@ -31,13 +31,15 @@ For testing a protected api endpoint, you need to..
 
 ### 2. Start MongoDB with Docker Compose
 
-Run the following command from the `mongodb` folder to start MongoDB:
+Run the following command from the `root` folder to start MongoDB:
 
 ```
 docker compose up -d
 ```
 
-then run ` npm run run:all`
+Also in the root folder run ` npm run run:all` to launch the applications.
+
+Frontend accessible from `http://localhost:4200/`
 
 
 
