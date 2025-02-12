@@ -29,8 +29,13 @@ For testing a protected api endpoint, you need to..
 
 ## Run
 
-Execute 
-`docker compose up -d`
+### 2. Start MongoDB with Docker Compose
+
+Run the following command from the `mongodb` folder to start MongoDB:
+
+```
+docker compose up -d
+```
 
 then run ` npm run run:all`
 
