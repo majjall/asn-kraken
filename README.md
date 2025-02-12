@@ -41,6 +41,6 @@ Also in the root folder run ` npm run run:all` to launch the applications.
 
 Frontend accessible from `http://localhost:4200/`
 
-
+The file to be uploaded can be found at the following location `apps/ng-app/public/input-xl.xlsx`
 
 
