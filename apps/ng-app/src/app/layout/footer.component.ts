@@ -7,7 +7,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   imports: [MatToolbarModule],
   template: `
     <mat-toolbar>
-      <span>© 2025 My Application. All rights reserved.</span>
+      <span>© 2025 - ASN Kraken. All rights reserved.</span>
     </mat-toolbar>
   `,
   styles: [

@@ -12,7 +12,7 @@
       }
     },
     "prisma:db-push": {
-      "command": "npx prisma db push --skip-generate --schema ./prisma/schema.prisma",
+      "command": "npx prisma db push --skip-generate --schema ./prisma/schema.prisma --force-reset",
       "options": {
         "cwd": "apps/api"
       }

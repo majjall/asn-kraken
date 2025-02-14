@@ -1,0 +1,28 @@
+# For connection urls to the following instances, see
+# https://github.com/prisma/prisma/blob/main/TESTING.md#environment-variables
+services:
+  # Replica Set (required for Prisma Client)
+  mongo:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile.mongo
+      args:
+        MONGO_VERSION: 4
+    container_name: mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: prisma-mongo
+      MONGO_REPLICA_HOST: localhost
+      MONGO_REPLICA_PORT: 27017
+      # Use "mongo" instead of "mongosh" before v5.0
+      MONGO_COMMAND: 'mongo'
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodb-data:/data/db
+
+volumes:
+  mongodb-data:
+

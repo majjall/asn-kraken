@@ -17,7 +17,7 @@ model Component {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt DateTime @default(now())
 
-  name       String   @unique
+  name       String
   updated_at DateTime
   prices     Int[]
   rate       Int

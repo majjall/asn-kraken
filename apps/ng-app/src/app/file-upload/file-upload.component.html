@@ -1,21 +1,40 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>File Upload</mat-card-title>
+    <mat-card-title>Single File Upload</mat-card-title>
   </mat-card-header>
 
   <mat-card-content>
     <div *ngIf="selectedFile; else noFile">
-      Selected file: {{ selectedFile.name || 'No file selected yet.' }}
+      Selected file: {{ selectedFile.name }}
     </div>
+
     <ng-template #noFile>
-      <p>No file selected</p>
+      <p>No file selected.</p>
     </ng-template>
+
+    <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)" accept="['.xlsx']" />
   </mat-card-content>
 
   <mat-card-actions>
-    <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)" accept=".xlsx" />
-    <button mat-raised-button color="primary" (click)="fileInput.click()">
-      Choose File
+    <button mat-raised-button color="primary" (click)="selectFile($event)" style="margin-right: 1rem;">
+      Choose file
     </button>
+
+    <button mat-raised-button [disabled]="!dataParsed" (click)="uploadFile()">Upload file content</button>
   </mat-card-actions>
 </mat-card>
+
+<section class="container" style="margin: 20px auto" [ngSwitch]="status">
+  <div *ngSwitchCase="'uploading'"><p>⏳ Uploading...</p></div>
+  <div *ngSwitchCase="'success'"><p>✅ Done!</p></div>
+  <div *ngSwitchCase="'fail'"><p>❌ An error occurred!</p></div>
+  <div *ngSwitchDefault>
+    <div *ngIf="selectedFile; else emptyFile">
+      <p>😶 Waiting to upload...</p>
+    </div>
+
+    <ng-template #emptyFile>
+      <p>😉 Nothing to upload yet.</p>
+    </ng-template>
+  </div>
+</section>

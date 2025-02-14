@@ -12,9 +12,11 @@ export class AppService {
   }
 
   async saveComponents(data: Component[]) {
-    data.forEach(async (d) => {
-      d.updated_at = new Date(d.updated_at);
-      await this.prisma.component.create({ data: d });
-    });
+    // data.forEach(async (d) => {
+    //   d.updated_at = new Date(d.updated_at);
+    //   await this.prisma.component.create({ data: d });
+    // });
+    data.forEach(d => d.updated_at = new Date(d.updated_at));
+    return this.prisma.component.createMany({ data });
   }
 }
